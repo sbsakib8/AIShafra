@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import './App.css'
 import { CiMicrophoneOn } from "react-icons/ci";
+import { datacontext } from './comtext/UseContext';
 function App() {
+  const data = useContext(datacontext)
+  console.log(data.value) // 'context data'
   return (
     <div className=' w-full h-full overflow-hidden flex justify-center items-center flex-col gap-9'>
       <img className=' h-80 py-10' src="/ai.png" alt="" />
