@@ -3,7 +3,7 @@ import './App.css'
 import { CiMicrophoneOn } from "react-icons/ci";
 import { datacontext } from './comtext/UseContext';
 function App() {
-  const {recognition, speaking, setspeaking} = useContext(datacontext)
+  const {recognition, speaking, setspeaking,Listening} = useContext(datacontext)
    
   return (
     <div className=' w-full h-full overflow-hidden flex justify-center items-center flex-col gap-9'>
@@ -20,7 +20,7 @@ function App() {
       </button>
       : <div>
         <img className='w-full h-20' src="/speak.gif" alt="" />
-        <p className=' text-white font-bold text-[20px]'>Listening...</p>
+        <p className=' text-white font-bold text-[20px]'>{Listening}</p>
       </div>
      }
     </div>

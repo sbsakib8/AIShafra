@@ -3,7 +3,7 @@ import getResponse from '../Gemini';
 export const datacontext = createContext()
 function UseContext({children}) {
  const [speaking, setspeaking] = useState()
- const [Listening, setListeners] = useState('Listening...')
+ const [Listening, setListening] = useState('Listening...')
     function speak(text){
         let text_speak = new SpeechSynthesisUtterance(text)
         text_speak.lang = 'hi-GB';
@@ -15,6 +15,7 @@ function UseContext({children}) {
     
    async function aiResponse(prompt){
       let text = await getResponse(prompt)
+      setListening(text)
       speak(text)
     }
 
@@ -25,7 +26,7 @@ function UseContext({children}) {
         let currentIndex = e.resultIndex 
         let transcript = e.results[currentIndex][0].transcript
 
-        console.log(transcript);
+       setListening(transcript)
         aiResponse(transcript)
     }
     const value = {
@@ -33,7 +34,7 @@ function UseContext({children}) {
         speaking,
         setspeaking,
         Listening,
-        setListeners,
+        
         
     }
   return (
