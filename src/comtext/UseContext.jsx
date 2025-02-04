@@ -1,8 +1,9 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import getResponse from '../Gemini';
 export const datacontext = createContext()
 function UseContext({children}) {
-
+ const [speaking, setspeaking] = useState()
+ const [Listening, setListeners] = useState('Listening...')
     function speak(text){
         let text_speak = new SpeechSynthesisUtterance(text)
         text_speak.lang = 'hi-GB';
@@ -28,7 +29,11 @@ function UseContext({children}) {
         aiResponse(transcript)
     }
     const value = {
-        recognition
+        recognition,
+        speaking,
+        setspeaking,
+        Listening,
+        setListeners,
         
     }
   return (
