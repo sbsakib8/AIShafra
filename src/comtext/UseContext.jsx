@@ -4,6 +4,7 @@ export const datacontext = createContext()
 function UseContext({children}) {
  const [speaking, setspeaking] = useState()
  const [Listening, setListening] = useState('Listening...')
+ const [res, setres]= useState(false)
     function speak(text){
         let text_speak = new SpeechSynthesisUtterance(text)
         text_speak.lang = 'hi-GB';
@@ -17,6 +18,10 @@ function UseContext({children}) {
       let text = await getResponse(prompt)
       setListening(text)
       speak(text)
+      setres(true)
+       setTimeout(()=>{
+            setspeaking(false)
+       },5000)
     }
 
 
@@ -34,6 +39,7 @@ function UseContext({children}) {
         speaking,
         setspeaking,
         Listening,
+        res,
         
         
     }
