@@ -16,8 +16,9 @@ function UseContext({children}) {
     
    async function aiResponse(prompt){
       let text = await getResponse(prompt)
-      setListening(text)
-      speak(text)
+      let newText = text.split('**')&&text.split('*')&&text.replace('google','sb sakib sarkar he is living in bangladesh at gazipur ')&&text.replace('Google','sb sakib sarkar he is living in bangladesh at gazipur ') 
+      setListening(newText)
+      speak(newText)
       setres(true)
        setTimeout(()=>{
             setspeaking(false)
@@ -39,6 +40,7 @@ function UseContext({children}) {
         speaking,
         setspeaking,
         Listening,
+        setListening,
         res,
         
         
